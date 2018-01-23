@@ -11,6 +11,6 @@ export function db(dynamodb: any) {
     });
 }
 
-export function config(options: any) {
-    db(new AWS.DynamoDB(options));
+export function config(dynamoDbOptions: any) {
+    db(new AWS.DynamoDB(dynamoDbOptions));
 }

@@ -3,7 +3,7 @@
 
 import { HourlyReportModel, DetailsReportModel } from './db/models';
 import { RepAccessOptions, RepUpdateOptions, RepUpdateData } from '@ournet/domain';
-import { ReportData, IReportRepository } from '@ournet/weather-domain';
+import { ReportData, IReportRepository, IHourlyReportRepository, IDetailsReportRepository } from '@ournet/weather-domain';
 import { DynamoReportStorage } from './DynamoReportStorage';
 
 
@@ -38,14 +38,14 @@ export class ReportRepository implements IReportRepository {
 }
 
 
-export class HourlyReportRepository extends ReportRepository {
+export class HourlyReportRepository extends ReportRepository implements IHourlyReportRepository {
     constructor() {
         super(new DynamoReportStorage(HourlyReportModel))
     }
 }
 
 
-export class DetailsReportRepository extends ReportRepository {
+export class DetailsReportRepository extends ReportRepository implements IDetailsReportRepository {
     constructor() {
         super(new DynamoReportStorage(DetailsReportModel))
     }

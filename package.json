@@ -37,6 +37,7 @@
   "homepage": "https://github.com/Ournet/weather-data",
   "dependencies": {
     "@ournet/domain": "^0.1.4",
+    "@ournet/weather-domain": "^0.1.2",
     "joi": "^13.0.2",
     "vogels": "^2.2.0"
   },

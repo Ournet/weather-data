@@ -4,8 +4,7 @@
 import test from 'ava';
 import { DetailsReportRepository } from './ReportRepository';
 import { DbConfig, createDbTables } from './db';
-import { ReportData } from '@ournet/weather-domain';
-import { ForecastUnits } from '../../weather-domain/types/entities/common';
+import { ReportData, ForecastUnits } from '@ournet/weather-domain';
 // const DynamoDB = require('aws-sdk').DynamoDB;
 const DYNAMO_PORT = 8001;
 
@@ -78,7 +77,7 @@ test('#getByIds', async t => {
     t.is(report1.id, orderred1[0].id, 'Placeid is first');
     t.is(report2.id, orderred1[1].id, 'Admin1 is second');
 
-    const orderred2 = await detailsRepository.getByIds([report1.id, report2.id]);
+    const orderred2 = await detailsRepository.getByIds([report2.id, report1.id]);
 
     t.is(report1.id, orderred2[1].id, 'Placeid is second');
     t.is(report2.id, orderred2[0].id, 'Admin1 is first');

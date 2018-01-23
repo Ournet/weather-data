@@ -8,14 +8,14 @@ const PREFIX = process.env.OURNET_WEATHER_TABLE_PREFIX || 'v0';
 export const MODEL_NAMES = ['HourlyReport', 'DetailsReport'];
 
 export const HourlyReportModel = vogels.define('HourlyReport', {
-    tableName: [PREFIX, 'OurnetWeather'].join('_'),
+    tableName: [PREFIX, 'OurnetWeather', 'HourlyReports'].join('_'),
     hashKey: 'id',
     schema: ReportSchema,
     timestamps: false,
 });
 
 export const DetailsReportModel = vogels.define('DetailsReport', {
-    tableName: [PREFIX, 'OurnetWeather'].join('_'),
+    tableName: [PREFIX, 'OurnetWeather', 'DetailsReports'].join('_'),
     hashKey: 'id',
     schema: ReportSchema,
     timestamps: false,
