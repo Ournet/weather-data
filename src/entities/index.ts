@@ -1,0 +1,2 @@
+
+export { DataReportData } from './ReportData';

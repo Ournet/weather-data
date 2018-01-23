@@ -1,0 +1,6 @@
+
+*.test.js
+src/
+tsconfig.json
+temp/
+.travis.yml
