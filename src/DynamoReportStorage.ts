@@ -39,7 +39,7 @@ export class DynamoReportStorage implements IReportRepository {
                 if (error) {
                     return reject(error);
                 }
-                resolve(result && <ReportData>result.get());
+                resolve(getReportData(result));
             });
         });
     }
@@ -57,7 +57,7 @@ export class DynamoReportStorage implements IReportRepository {
                 if (error) {
                     return reject(error);
                 }
-                resolve(result && result.map(item => <ReportData>item.get()) || []);
+                resolve(result && result.map(getReportData) || []);
             });
         })
             .then(items => {
@@ -101,7 +101,7 @@ export class DynamoReportStorage implements IReportRepository {
                 if (error) {
                     return reject(error);
                 }
-                resolve(result && <ReportData>result.get());
+                resolve(getReportData(result));
             });
         });
     }
@@ -118,7 +118,7 @@ export class DynamoReportStorage implements IReportRepository {
                 if (error) {
                     return reject(error);
                 }
-                resolve(result && <ReportData>result.get());
+                resolve(getReportData(result));
             });
         });
     }
@@ -139,8 +139,26 @@ export class DynamoReportStorage implements IReportRepository {
                 if (error) {
                     return reject(error);
                 }
-                resolve(result && <ReportData>result.get());
+                resolve(getReportData(result));
             });
         });
     }
+}
+
+function getReportData(data: any): ReportData {
+    if (!data) {
+        return null;
+    }
+    const report = <ReportData>data.get();
+    if (!report) {
+        return report;
+    }
+    if (report.createdAt) {
+        report.createdAt = new Date(report.createdAt);
+    }
+    if (report.expiresAt) {
+        report.expiresAt = new Date(report.expiresAt);
+    }
+
+    return report;
 }
