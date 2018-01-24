@@ -1,6 +1,6 @@
 {
   "name": "@ournet/weather-data",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Ournet weather data",
   "main": "./lib/index.js",
   "types": "./types/index.d.ts",
@@ -37,7 +37,7 @@
   "homepage": "https://github.com/Ournet/weather-data",
   "dependencies": {
     "@ournet/domain": "^0.1.4",
-    "@ournet/weather-domain": "^0.1.2",
+    "@ournet/weather-domain": "^0.1.3",
     "joi": "^13.0.2",
     "vogels": "^2.2.0"
   },
