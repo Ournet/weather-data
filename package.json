@@ -1,6 +1,6 @@
 {
   "name": "@ournet/weather-data",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Ournet weather data",
   "main": "./lib/index.js",
   "types": "./types/index.d.ts",
