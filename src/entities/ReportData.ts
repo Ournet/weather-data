@@ -1,4 +1,10 @@
 
-import { ReportData } from '@ournet/weather-domain';
+import { ForecastUnits } from '@ournet/weather-domain';
 
-export interface DataReportData extends ReportData {}
+export interface DataReportData {
+    id: string;
+    createdAt?: Date;
+    expiresAt?: number;
+    units?: ForecastUnits;
+    data: string;
+}

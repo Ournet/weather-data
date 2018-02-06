@@ -5,6 +5,7 @@ import { RepAccessOptions, RepUpdateData, RepUpdateOptions } from '@ournet/domai
 import { ReportData, IReportRepository } from '@ournet/weather-domain';
 import { ReportDataMapper } from './mappers/ReportDataMapper';
 import { checkParam, accessOptionsToDynamoParams } from './helpers';
+import { DataReportData } from './entities/ReportData';
 
 export class DynamoReportStorage implements IReportRepository {
     constructor(private model: any) { }
@@ -91,9 +92,9 @@ export class DynamoReportStorage implements IReportRepository {
     put(data: ReportData): Promise<ReportData> {
         return new Promise((resolve, reject) => {
             const params = accessOptionsToDynamoParams<ReportData>({});
-            params.overwrite = false;
+            params.overwrite = true;
 
-            const dataPlace = ReportDataMapper.transform(data);
+            const dataPlace = ReportDataMapper.toData(data);
 
             // debug('creating place: ', dataPlace);
 
@@ -110,7 +111,7 @@ export class DynamoReportStorage implements IReportRepository {
             const params = accessOptionsToDynamoParams<ReportData>(options);
             params.overwrite = false;
 
-            const dataPlace = ReportDataMapper.transform(data);
+            const dataPlace = ReportDataMapper.toData(data);
 
             // debug('creating place: ', dataPlace);
 
@@ -133,7 +134,7 @@ export class DynamoReportStorage implements IReportRepository {
                 data.delete.forEach(item => dataPlace[item] = null);
             }
 
-            dataPlace = ReportDataMapper.transform(dataPlace);
+            dataPlace = ReportDataMapper.toData(dataPlace);
 
             this.model.update(dataPlace, params, (error: Error, result: any) => {
                 if (error) {
@@ -149,16 +150,12 @@ function getReportData(data: any): ReportData {
     if (!data) {
         return null;
     }
-    const report = <ReportData>data.get();
+    const report = <DataReportData>data.get();
     if (!report) {
-        return report;
+        return null;
     }
     if (report.createdAt) {
         report.createdAt = new Date(report.createdAt);
     }
-    if (report.expiresAt) {
-        report.expiresAt = new Date(report.expiresAt);
-    }
-
-    return report;
+    return ReportDataMapper.fromData(report);
 }

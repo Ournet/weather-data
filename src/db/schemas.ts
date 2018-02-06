@@ -8,6 +8,6 @@ export const ReportSchema = Joi.object().keys({
     data: Joi.string().min(10).max(6000).required(),
 
     createdAt: Joi.date().required(),
-    expiresAt: Joi.date().required(),
+    expiresAt: Joi.number().integer().required(),
 });
 
