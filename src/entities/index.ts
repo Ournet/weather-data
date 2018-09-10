@@ -1,2 +1,0 @@
-
-export { DataReportData } from './ReportData';

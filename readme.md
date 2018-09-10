@@ -2,6 +2,6 @@
 
 Ournet weather data module.
 
-### env
+## Changelog
 
-- `OURNET_WEATHER_TABLE_PREFIX`
+- v0.2.0 - September 10, 2018

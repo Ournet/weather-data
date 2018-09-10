@@ -1,3 +1,4 @@
 
-export { DbConfig, createDbTables } from './db';
-export { ReportRepository, DetailsReportRepository, HourlyReportRepository } from './ReportRepository';
+export {
+    ForecastReportRepositoryBuilder,
+} from './repository-builder';
