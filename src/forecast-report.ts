@@ -2,10 +2,10 @@
 import DynamoDB = require('aws-sdk/clients/dynamodb');
 import { ReportData } from "@ournet/weather-domain";
 import {
-    DynamoModel,
-} from 'dynamo-model';
+    DynamoItem,
+} from 'dynamo-item';
 
-export class ForecastReportModel extends DynamoModel<{ id: string }, ReportData> {
+export class ForecastReportModel extends DynamoItem<{ id: string }, ReportData> {
     constructor(client: DynamoDB.DocumentClient, tableSuffix: string) {
         super({
             hashKey: {
@@ -14,6 +14,6 @@ export class ForecastReportModel extends DynamoModel<{ id: string }, ReportData>
             },
             name: 'forecast_reports',
             tableName: `ournet_forecast_reports_${tableSuffix}`,
-        }, client);
+        }, client as any);
     }
 }
