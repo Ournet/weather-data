@@ -1,6 +1,6 @@
 {
   "name": "@ournet/weather-data",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Ournet weather data",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
@@ -37,15 +37,15 @@
   "homepage": "https://github.com/Ournet/weather-data",
   "dependencies": {
     "@ournet/domain": "^0.3.3",
-    "@ournet/weather-domain": "^0.2.0",
-    "aws-sdk": "^2.354.0",
+    "@ournet/weather-domain": "^0.2.2",
+    "aws-sdk": "^2.382.0",
     "dynamo-item": "^0.1.1"
   },
   "devDependencies": {
-    "@types/node": "10.12.7",
-    "ava": "^0.25.0",
-    "debug": "^4.1.0",
+    "@types/node": "10.12.18",
+    "ava": "^1.0.1",
+    "debug": "^4.1.1",
     "rimraf": "^2.6.2",
-    "typescript": "3.1.6"
+    "typescript": "3.2.2"
   }
 }
